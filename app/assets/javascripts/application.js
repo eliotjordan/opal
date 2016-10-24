@@ -12,5 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require turbolinks//
+// Required by Blacklight
+//= require blacklight/blacklight
+
+//= require geo_concerns
+//= require curation_concerns
+// Require es6 modules after almond is loaded in curation concerns.
+//= require geo_concerns/es6-modules
 //= require_tree .
