@@ -37,7 +37,6 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
   gem 'capistrano-rails-console'
-  gem 'capistrano-rvm', github: 'capistrano/rvm'
 end
 
 group :development do
@@ -52,6 +51,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'active_fedora-noid', '2.0.0.beta2'
+gem 'rgeoserver'
 gem 'simple_mapnik', git: 'https://github.com/geoconcerns/simple_mapnik.git', branch: 'no-bundle'
 gem 'geo_concerns'
 group :development, :test do
