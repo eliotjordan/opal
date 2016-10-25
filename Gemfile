@@ -33,6 +33,11 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-rvm', github: 'capistrano/rvm'
 end
 
 group :development do
@@ -47,6 +52,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'simple_mapnik', git: 'https://github.com/geoconcerns/simple_mapnik.git', branch: 'no-bundle'
 gem 'geo_concerns'
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
