@@ -3,6 +3,8 @@ CurationConcerns.configure do |config|
   config.register_curation_concern :vector_work
   config.register_curation_concern :raster_work
   config.register_curation_concern :image_work
+
+  config.minter_statefile = "log/minter-state"
   # Should schema.org microdata be displayed?
   # config.display_microdata = true
 
