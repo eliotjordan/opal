@@ -53,9 +53,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'active_fedora-noid', '2.0.0.beta5'
 gem 'rgeoserver'
-gem 'simple_mapnik', git: 'https://github.com/geoconcerns/simple_mapnik.git', ref: 'a11122'
+gem 'simpler-tiles'
 gem 'curation_concerns', git: 'https://github.com/projecthydra/curation_concerns.git', ref: '5df115b1ba'
-gem 'geo_concerns', git: 'https://github.com/projecthydra-labs/geo_concerns.git' , branch: 'cc-relax'
+gem 'geo_concerns', git: 'https://github.com/projecthydra-labs/geo_concerns.git' , branch: 'production-test'
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
 end

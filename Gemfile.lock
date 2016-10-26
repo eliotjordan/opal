@@ -1,26 +1,15 @@
 GIT
-  remote: https://github.com/geoconcerns/simple_mapnik.git
-  revision: a11122ba727cd0f7f9802cfe6c815a3233529f39
-  ref: a11122
-  specs:
-    simple_mapnik (0.1.2)
-      bundler (~> 1.12)
-      ffi (~> 1.9.0)
-      nokogiri
-      rake
-      rubyzip (~> 1.2.0)
-
-GIT
   remote: https://github.com/projecthydra-labs/geo_concerns.git
-  revision: a9a1910b87bb8e14ed8121e42fee3c2e23fa2b73
-  branch: cc-relax
+  revision: 9f4761be35aeb4c8b115de4742bef60852138815
+  branch: production-test
   specs:
     geo_concerns (0.0.10)
-      curation_concerns
+      bunny
+      curation_concerns (>= 1.6)
       json-schema (>= 2.6.2)
       leaflet-rails (~> 0.7)
       rgeoserver (>= 0.10.0)
-      simple_mapnik (= 0.1.2)
+      simpler-tiles
 
 GIT
   remote: https://github.com/projecthydra/curation_concerns.git
@@ -118,6 +107,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     almond-rails (0.0.3)
       rails (>= 4.2, < 6)
+    amq-protocol (2.0.1)
     arel (7.1.4)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
@@ -161,6 +151,8 @@ GEM
       sass-rails
       skydrive
     builder (3.2.2)
+    bunny (2.6.1)
+      amq-protocol (>= 2.0.1)
     byebug (9.0.6)
     cancancan (1.15.0)
     capistrano (3.6.1)
@@ -175,10 +167,10 @@ GEM
     capistrano-harrow (0.5.3)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
-    capistrano-rails (1.1.8)
+    capistrano-rails (1.2.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rails-console (2.1.1)
+    capistrano-rails-console (2.2.0)
       capistrano (>= 3.5.0, < 4.0.0)
       sshkit-interactive (~> 0.2.0)
     clipboard-rails (1.5.15)
@@ -380,7 +372,7 @@ GEM
     orm_adapter (0.5.0)
     os (0.9.6)
     puma (3.6.0)
-    qa (0.10.1)
+    qa (0.10.2)
       activerecord-import
       deprecation
       faraday
@@ -492,6 +484,7 @@ GEM
     simple_form (3.3.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    simpler-tiles (0.3.1)
     skydrive (1.2.0)
       activesupport
       httmultiparty
@@ -587,7 +580,7 @@ DEPENDENCIES
   rsolr (~> 1.0)
   rspec-rails
   sass-rails (~> 5.0)
-  simple_mapnik!
+  simpler-tiles
   solr_wrapper (>= 0.3)
   spring
   spring-watcher-listen (~> 2.0.0)
