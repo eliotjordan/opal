@@ -84,5 +84,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.consider_all_requests_local = true
+  config.consider_all_requests_local  = true
+  config.active_job.queue_adapter = :sidekiq
 end

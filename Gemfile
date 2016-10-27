@@ -54,6 +54,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'active_fedora-noid', '2.0.0.beta5'
 gem 'rgeoserver'
 gem 'simpler-tiles'
+gem 'sidekiq'
 gem 'curation_concerns', git: 'https://github.com/projecthydra/curation_concerns.git', ref: '5df115b1ba'
 gem 'geo_concerns', git: 'https://github.com/projecthydra-labs/geo_concerns.git' , branch: 'production-test'
 group :development, :test do
