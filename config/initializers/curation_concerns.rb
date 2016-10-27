@@ -24,16 +24,16 @@ CurationConcerns.configure do |config|
   # config.analytic_start_date = DateTime.new(2014,9,10)
 
   # Where to store tempfiles, leave blank for the system temp directory (e.g. /tmp)
-  # config.temp_file_base = '/home/developer1'
+  config.temp_file_base = File.join(Rails.root, 'tmp')
 
   # Location on local file system where derivatives will be stored.
   # If you use a multi-server architecture, this MUST be a shared volume.
-  # config.derivatives_path = File.join(Rails.root, 'tmp', 'derivatives')
+  config.derivatives_path = File.join(Rails.root, 'tmp', 'derivatives')
 
   # Location on local file system where uploaded files will be staged
   # prior to being ingested into the repository or having derivatives generated.
   # If you use a multi-server architecture, this MUST be a shared volume.
-  # config.working_path = File.join(Rails.root, 'tmp', 'uploads')
+  config.working_path = File.join(Rails.root, 'tmp', 'uploads')
 
   # If you have ffmpeg installed and want to transcode audio and video uncomment this line
   # config.enable_ffmpeg = true
