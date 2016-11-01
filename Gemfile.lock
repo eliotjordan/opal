@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/projecthydra-labs/geo_concerns.git
-  revision: fbcba8e757deebbaccdba6ddf64c56cdb76b5c97
+  revision: 8bc7c64d9d03d48c591beab2ab2340a2b3363ef7
   branch: production-test
   specs:
     geo_concerns (0.0.10)
