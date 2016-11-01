@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/projecthydra-labs/geo_concerns.git
-  revision: 9f4761be35aeb4c8b115de4742bef60852138815
+  revision: abf7947ff9e7d479aef8aeec247367c2bb2f0a1a
   branch: production-test
   specs:
     geo_concerns (0.0.10)
@@ -198,7 +198,7 @@ GEM
     devise-guests (0.5.0)
       devise
     diff-lcs (1.2.5)
-    domain_name (0.5.20160826)
+    domain_name (0.5.20161021)
       unf (>= 0.0.5, < 1.0.0)
     dropbox-sdk (1.6.5)
       json
@@ -254,15 +254,15 @@ GEM
     http_logger (0.5.1)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
-    hydra-access-controls (10.3.0)
+    hydra-access-controls (10.3.2)
       active-fedora (>= 10.0.0, < 12)
       activesupport (>= 4, < 6)
       blacklight (>= 5.16)
       blacklight-access_controls (~> 0.6)
       cancancan (~> 1.8)
       deprecation (~> 1.0)
-    hydra-core (10.3.0)
-      hydra-access-controls (= 10.3.0)
+    hydra-core (10.3.2)
+      hydra-access-controls (= 10.3.2)
       railties (>= 4.0.0, < 6)
     hydra-derivatives (3.1.4)
       active-fedora (>= 9.0, < 12)
@@ -279,9 +279,9 @@ GEM
       sprockets-es6
     hydra-file_characterization (0.3.3)
       activesupport (>= 3.0.0)
-    hydra-head (10.3.0)
-      hydra-access-controls (= 10.3.0)
-      hydra-core (= 10.3.0)
+    hydra-head (10.3.2)
+      hydra-access-controls (= 10.3.2)
+      hydra-core (= 10.3.2)
       rails (>= 3.2.6)
     hydra-pcdm (0.9.0)
       active-fedora (>= 10, < 12)
