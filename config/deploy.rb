@@ -30,7 +30,9 @@ set :linked_files, fetch(:linked_files, []).push('config/blacklight.yml',
                                                  'config/fedora.yml',
                                                  'config/solr.yml',
                                                  'config/geoserver.yml',
-                                                 'config/initializers/curation_concerns.rb')
+                                                 'config/messaging.yml',
+                                                 'config/initializers/curation_concerns.rb',
+                                                 'config/initializers/messaging_config.rb')
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/derivatives', 'tmp/uploads', 'vendor/bundle', 'staged_files')
