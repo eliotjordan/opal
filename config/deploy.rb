@@ -2,7 +2,7 @@
 lock '3.6.1'
 
 set :application, 'opal'
-set :repo_url, 'https://github.com/eliotjordan/opal.git'
+set :repo_url, 'https://github.com/pulibrary/opal.git'
 
 # Default branch is :master
 set :branch, ENV['BRANCH'] || 'master'
