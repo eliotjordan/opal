@@ -1,0 +1,10 @@
+<% if current_user %>
+  <%= render 'shared/add_content' %>
+  <%= render 'shared/my_actions' %>
+<% else %>
+  <ul class="nav navbar-nav">
+    <li>
+	  <%= link_to 'Log In', omniauth_authorize_path(:user, :cas), role: 'menuitem' %>
+	</li>
+  </ul>
+<% end %>

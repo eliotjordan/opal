@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     concerns :searchable
   end
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }, skip: [:passwords, :registration]
+  devise_scope :user do
+    get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
+    get 'users/auth/cas', to: 'users/omniauth_authorize#passthru', defaults: { provider: :cas }, as: "new_user_session"
+  end
+  
   mount CurationConcerns::Engine, at: '/'
   resources :welcome, only: 'index'
   root 'welcome#index'
@@ -34,6 +39,4 @@ Rails.application.routes.draw do
   authenticate :user do
     mount Sidekiq::Web => '/sidekiq'
   end
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
