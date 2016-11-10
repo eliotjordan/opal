@@ -3,7 +3,6 @@ class Ability
 
   include CurationConcerns::Ability
   include GeoConcerns::Ability
-  self.ability_logic += [:everyone_can_create_curation_concerns]
 
   # Define any customized permissions here.
   def custom_permissions
@@ -18,5 +17,10 @@ class Ability
     # if user_groups.include? 'special_group'
     #   can [:create], ActiveFedora::Base
     # end
+  end
+
+  # Abilities that should only be granted to admin users
+  def admin_permissions
+    can [:manage], :all
   end
 end
