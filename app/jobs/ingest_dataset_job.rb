@@ -1,5 +1,5 @@
 class IngestDatasetJob < ActiveJob::Base
-  queue_as :default
+  queue_as :ingest
 
   def perform(md_path, ds_path, user, ark = nil)
     logger.info "Ingesting GIS Dataset #{ds_path}"
@@ -10,12 +10,16 @@ class IngestDatasetJob < ActiveJob::Base
     @md_fileset = md_fileset(md_path)
     @ds_fileset = ds_fileset(ds_path)
     attach_file_sets
+    trigger_events
   end
 
   def metadata(path)
     doc = Nokogiri::XML(File.open(path, 'r').read)
     out = GeoConcerns::Extractors::FgdcMetadataExtractor.new(doc)
     out.to_hash
+  rescue
+    logger.error "Problem extracting metadata from #{@ark}"
+    {}
   end
 
   def resource
@@ -61,8 +65,8 @@ class IngestDatasetJob < ActiveJob::Base
 
   def attach_file_sets
     ordered_members = []
-    ordered_members << @md_fileset
-    ordered_members << @ds_fileset
+    ordered_members << @md_fileset if @md_fileset
+    ordered_members << @ds_fileset if @ds_fileset
     @resource.ordered_members = ordered_members
     @resource.representative_id = @ds_fileset.id
     @resource.thumbnail_id = @ds_fileset.id
