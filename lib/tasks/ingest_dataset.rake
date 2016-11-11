@@ -3,8 +3,8 @@ task ingest_datasets: :environment do
   user = User.all.first
   records = JSON.parse(File.open(ARGV[1]).read)
   records.each do |r|
-    ds_base = "/Volumes/data/GISdata"
-    md_base = "/Volumes/data/metadata"
+    ds_base = "/mnt/data/GISdata"
+    md_base = "/mnt/data/metadata"
     ds_path = "#{ds_base}#{r['data']}"
     md_path = "#{md_base}#{r['metadata']}"
     ark = "ark:/88435/#{r['ark']}"
