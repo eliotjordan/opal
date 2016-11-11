@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -37,6 +38,9 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
   gem 'capistrano-rails-console'
+  gem 'solr_wrapper', '>= 0.3'
+  gem 'fcrepo_wrapper'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -57,14 +61,9 @@ gem 'simpler-tiles'
 gem 'sidekiq'
 gem 'curation_concerns', git: 'https://github.com/projecthydra/curation_concerns.git', ref: '5df115b1ba'
 gem 'geo_concerns', git: 'https://github.com/projecthydra-labs/geo_concerns.git' , branch: 'production-test'
-group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
-end
-
+gem 'hydra-role-management', '~> 0.2.0'
 gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.5'
-group :development, :test do
-  gem 'fcrepo_wrapper'
-  gem 'rspec-rails'
-end
+gem 'omniauth-cas'
+

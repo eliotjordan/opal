@@ -22,4 +22,8 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: <%= ENV["OPAL_DB"] %>
+  host: <%= ENV["OPAL_DB_HOST"] %>
+  username: <%= ENV["OPAL_DB_USERNAME"] %>
+  password: <%= ENV["OPAL_DB_PASSWORD"] %>
