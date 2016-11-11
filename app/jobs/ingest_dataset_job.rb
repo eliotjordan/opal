@@ -6,6 +6,7 @@ class IngestDatasetJob < ActiveJob::Base
     @ark = ark
     @metadata = metadata(md_path)
     @user = user
+    delete_duplicates!
     @resource = resource
     @md_fileset = md_fileset(md_path)
     @ds_fileset = ds_fileset(ds_path)
@@ -20,6 +21,18 @@ class IngestDatasetJob < ActiveJob::Base
   rescue
     logger.error "Problem extracting metadata from #{@ark}"
     {}
+  end
+
+  def delete_duplicates!
+    old_resources = old_resource_ids.map { |x| ActiveFedora::Base.find(x) }
+    old_resources.each do |resource|
+      logger.info "Deleting existing resource with ID of #{resource.id} which had ARK #{@ark}"
+      resource.destroy
+    end
+  end
+
+  def old_resource_ids
+    ActiveFedora::SolrService.query("identifier_ssim:#{RSolr.solr_escape(@ark)}", fl: "id").map { |x| x["id"] }
   end
 
   def resource
