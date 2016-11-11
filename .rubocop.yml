@@ -1,0 +1,40 @@
+require: rubocop-rspec
+
+Rails:
+  Enabled: true
+
+AllCops:
+  DisplayCopNames: true
+
+  Include:
+  - '**/Rakefile'
+
+  Exclude:
+  - 'bin/*'
+  - 'db/**/*'
+  - 'vendor/**/*'
+  - 'config/initializers/*'
+  - 'tmp/**/*'
+  - 'scripts/*'
+  - 'config/deploy.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+    - 'config/routes.rb'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/jobs/ingest_dataset_job.rb'
+
+Style/Documentation:
+  Enabled: false
