@@ -4,8 +4,6 @@ class User < ApplicationRecord
   # Connects this user object to Curation Concerns behaviors.
   include CurationConcerns::User
 
-
-
   if Blacklight::Utils.needs_attr_accessible?
     attr_accessible :email, :password, :password_confirmation
   end

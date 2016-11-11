@@ -13,7 +13,7 @@ require 'ezid-client'
 module Pulmap
   class Config
     attr_reader :md_base_path, :ds_base_path
-  
+
     def md_base_path
       '/metadata/'
     end
@@ -32,7 +32,6 @@ module Pulmap
       }
     end
   end
-
 
   class Metadata
     attr_reader :doc, :path, :arks
@@ -65,12 +64,12 @@ module Pulmap
     def download?
       return true if /download/.match(onlink)
       return true if /publicdata/.match(onlink)
-      return false
+      false
     end
 
     def data_path
       return unless onlink
-      rel_path = onlink.gsub('http://map.princeton.edu/download/data/','').gsub('http://map.princeton.edu/publicdata/','')
+      rel_path = onlink.gsub('http://map.princeton.edu/download/data/', '').gsub('http://map.princeton.edu/publicdata/', '')
       "#{@config.ds_base_path}#{rel_path}"
     end
 
@@ -80,20 +79,20 @@ module Pulmap
     end
 
     def guid
-      File.basename(path,File.extname(path))
+      File.basename(path, File.extname(path))
     end
 
     def ark
       rows = arks.rows.select { |h| h['guid'] == guid.upcase }
       ark = rows.first['ark'] unless rows.empty?
       return ark unless ark.nil?
-      return arks.mint
+      arks.mint
     end
   end
 
   class MetadataFiles
     attr_reader :dir, :ext, :file_paths
-    def initialize(dir, ext='*')
+    def initialize(dir, ext = '*')
       @dir = dir
       @ext = ext
     end
@@ -103,11 +102,11 @@ module Pulmap
       return if docs.empty?
       column_names = docs.first.keys
       out = CSV.generate do |csv|
-              csv << column_names
-              docs.each do |x|
-                csv << x.values
-              end
-            end
+        csv << column_names
+        docs.each do |x|
+          csv << x.values
+        end
+      end
       File.write('metadata.csv', out)
     end
 
@@ -119,26 +118,26 @@ module Pulmap
 
     private
 
-      def file_paths
-        @files ||= Dir["#{dir}/#{ext}"]
-      end
+    def file_paths
+      @files ||= Dir["#{dir}/#{ext}"]
+    end
 
-      def build
-        docs = []
-        arks = Pulmap::Arks.new
-        file_paths.each do |file_path|
-          h =  Pulmap::Metadata.new(file_path, arks).to_hash
-          next if h.nil?
-          docs << h
-          puts h
-        end
-        docs
+    def build
+      docs = []
+      arks = Pulmap::Arks.new
+      file_paths.each do |file_path|
+        h =  Pulmap::Metadata.new(file_path, arks).to_hash
+        next if h.nil?
+        docs << h
+        puts h
       end
+      docs
+    end
   end
 
   class Arks
     attr_reader :arks
-    def initialize()
+    def initialize
       @config = Pulmap::Config.new
     end
 
@@ -152,19 +151,18 @@ module Pulmap
 
     private
 
-      def query
-        conn ||= PGconn.connect(@config.pg)
-        res = conn.exec("SELECT guid, ark FROM geodata WHERE item_type = 'dataset'")
-        rows = []
-        res.each do |row|
-          rows << row
-        end
-        rows
+    def query
+      conn ||= PGconn.connect(@config.pg)
+      res = conn.exec("SELECT guid, ark FROM geodata WHERE item_type = 'dataset'")
+      rows = []
+      res.each do |row|
+        rows << row
       end
+      rows
+    end
 
-      def arks
-        @arks ||= JSON.parse(File.open('arks/arks-full.json').read)
-      end
+    def arks
+      @arks ||= JSON.parse(File.open('arks/arks-full.json').read)
+    end
   end
 end
-

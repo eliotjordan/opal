@@ -3,5 +3,4 @@ class FileSet < ActiveFedora::Base
   include ::CurationConcerns::FileSetBehavior
   # GeoConcerns behavior to FileSet.
   include ::GeoConcerns::GeoFileSetBehavior
-
 end

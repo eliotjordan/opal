@@ -2,7 +2,8 @@ class CatalogController < ApplicationController
   include CurationConcerns::CatalogController
   configure_blacklight do |config|
     # config.search_builder_class = ::SearchBuilder
-    ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
+    ## Default parameters to send to solr for all search-like requests.
+    ### See also SolrHelper#solr_search_params
     config.default_solr_params = {
       qf: %w(title_tesim name_tesim),
       qt: 'search',
