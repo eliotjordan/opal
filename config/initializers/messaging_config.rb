@@ -8,7 +8,7 @@ module Messaging
   end
 
   def geoblacklight_client
-    local_client
+    rabbit_client
   end
 
   def geoserver_client
